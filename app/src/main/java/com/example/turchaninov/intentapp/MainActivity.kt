@@ -65,6 +65,7 @@ fun ShareTextScreen(modifier : Modifier = Modifier) {
     val context = LocalContext.current
 
     Button(
+        modifier = modifier,
         onClick = {
             val intent = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
@@ -85,6 +86,23 @@ fun ShareTextScreen(modifier : Modifier = Modifier) {
 }
 
 @Composable
+fun SecondActivityButton(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+
+    Button(
+        modifier = modifier,
+        onClick = {
+            val intent = Intent(context, SecondActivity::class.java).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, currentText)
+            }
+            context.startActivity(intent)
+        }
+    ) {
+        Text(stringResource(R.string.open_second_activity_text))
+    }
+}
+@Composable
 fun MainMenu(modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center,
@@ -93,6 +111,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
     ) {
         TextInput(modifier)
         ShareTextScreen(modifier)
+        SecondActivityButton(modifier)
     }
 }
 
