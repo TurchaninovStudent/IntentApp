@@ -2,6 +2,7 @@ package com.example.turchaninov.intentapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -69,12 +70,17 @@ fun ShareTextScreen(modifier : Modifier = Modifier) {
                 type = "text/plain"
                 putExtra(Intent.EXTRA_TEXT, currentText)
             }
-            context.startActivity(
-                Intent.createChooser(intent, context.getString(R.string.share_text_title))
-            )
+            if (currentText != "") {
+                context.startActivity(
+                    Intent.createChooser(intent, "Поделиться через...")
+                )
+            } else {
+                Toast.makeText(context, "Нельзя отправить пустой текст", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
     ) {
-        Text(stringResource(R.string.share_button_text))
+        Text("Поделиться текстом")
     }
 }
 
