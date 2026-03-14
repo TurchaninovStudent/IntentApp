@@ -2,4 +2,5 @@
     <string name="app_name">IntentApp</string>
     <string name="title_activity_second">SecondActivity</string>
     <string name="input_placeholder_text">Введите текст</string>
+    <string name="open_second_activity_text">Открыть вторую панель</string>
 </resources>
