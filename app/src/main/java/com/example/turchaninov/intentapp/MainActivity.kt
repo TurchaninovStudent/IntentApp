@@ -1,7 +1,6 @@
 package com.example.turchaninov.intentapp
 
 import android.os.Bundle
-import android.widget.EditText
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -17,9 +16,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.turchaninov.intentapp.ui.theme.IntentAppTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,15 +39,20 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+var currentText = ""
+
 @Composable
-fun TextInput() {
-    var textState by remember { mutableStateOf("") }
+fun TextInput(modifier: Modifier) {
+    var textState by remember { mutableStateOf(currentText) }
+
     TextField(
         value = textState,
         onValueChange = { newText ->
             textState = newText
+            currentText = newText
         },
-        label = { Text("Введите текст") },
+        label = { Text(stringResource(R.string.input_placeholder_text)) },
+        modifier = modifier,
     )
 }
 
@@ -53,9 +60,10 @@ fun TextInput() {
 fun MainMenu(modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center,
-        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.fillMaxSize(),
     ) {
-        TextInput()
+        TextInput(modifier)
     }
 }
 
@@ -63,8 +71,6 @@ fun MainMenu(modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     IntentAppTheme {
-        MainMenu(
-            modifier = Modifier.fillMaxSize()
-        )
+        MainMenu()
     }
 }
