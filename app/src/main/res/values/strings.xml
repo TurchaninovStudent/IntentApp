@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">IntentApp</string>
     <string name="title_activity_second">SecondActivity</string>
+    <string name="input_placeholder_text">Введите текст</string>
+    <string name="share_button_text">Поделиться текстом</string>
+    <string name="share_text_title">Поделиться через...</string>
 </resources>
