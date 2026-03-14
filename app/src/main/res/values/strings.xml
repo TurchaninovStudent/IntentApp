@@ -5,4 +5,7 @@
     <string name="share_button_text">Поделиться текстом</string>
     <string name="share_text_title">Поделиться через...</string>
     <string name="open_second_activity_text">Открыть вторую панель</string>
+    <string name="share_text">Поделиться текстом</string>
+    <string name="share_empty_text_error">Нельзя отправить пустой текст</string>
+    <string name="share_through_text">Поделиться через...</string>
 </resources>
