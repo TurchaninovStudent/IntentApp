@@ -73,15 +73,16 @@ fun ShareTextScreen(modifier : Modifier = Modifier) {
             }
             if (currentText != "") {
                 context.startActivity(
-                    Intent.createChooser(intent, "Поделиться через...")
+                    Intent.createChooser(intent, context.getString(R.string.share_through_text))
                 )
             } else {
-                Toast.makeText(context, "Нельзя отправить пустой текст", Toast.LENGTH_SHORT)
+                Toast.makeText(context,
+                    context.getString(R.string.share_empty_text_error), Toast.LENGTH_SHORT)
                     .show()
             }
         }
     ) {
-        Text("Поделиться текстом")
+        Text(stringResource(R.string.share_text))
     }
 }
 
